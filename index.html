@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TREASURE EXPLORER — Chasse au Trésor</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pirata+One&family=IM+Fell+English:ital@0;1&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏴‍☠️</text></svg>">
+</head>
+<body>
+
+<!-- ==================== ÉCRAN D'ACCUEIL ==================== -->
+<section class="screen active" id="screen-home">
+  <div class="home-scene">
+    <div class="sky"></div>
+    <div class="sun"></div>
+    <div class="cloud c1">☁️</div>
+    <div class="cloud c2">☁️</div>
+    <div class="cloud c3">☁️</div>
+    <div class="home-island">🏝️</div>
+    <div class="home-seagull g1">🦅</div>
+    <div class="home-seagull g2">🦅</div>
+    <div class="ocean">
+      <div class="wave w1"></div>
+      <div class="wave w2"></div>
+      <div class="wave w3"></div>
+    </div>
+    <div class="home-ship">⛵</div>
+  </div>
+
+  <div class="home-content">
+    <div class="title-wrap">
+      <div class="home-signature">Jeu Kais Alvarez</div>
+      <div class="title-flag">🏴‍☠️</div>
+      <h1 class="game-title"><span>TREASURE</span><span class="title-gold">EXPLORER</span></h1>
+      <p class="game-subtitle">L'âge d'or de la piraterie vous appelle, Capitaine…</p>
+    </div>
+    <div class="home-buttons">
+      <button class="btn btn-gold btn-big" id="btn-play">⚓ JOUER</button>
+      <button class="btn btn-parchment" id="btn-home-collection">🗝️ COLLECTION</button>
+      <button class="btn btn-parchment" id="btn-home-settings">⚙️ PARAMÈTRES</button>
+    </div>
+    <p class="home-save-hint" id="home-save-hint"></p>
+  </div>
+</section>
+
+<!-- ==================== CRÉATION DU PERSONNAGE ==================== -->
+<section class="screen" id="screen-character">
+  <div class="panel parchment">
+    <h2 class="panel-title">✍️ Votre légende commence</h2>
+    <p class="panel-sub">Chaque grand explorateur a un nom qui résonne à travers les mers.</p>
+
+    <label class="field-label" for="input-name">Nom d'explorateur</label>
+    <input type="text" id="input-name" class="field" maxlength="20" placeholder="ex : Capitaine Aurore" autocomplete="off">
+
+    <label class="field-label">Choisissez votre explorateur</label>
+    <div class="character-grid" id="character-grid"></div>
+
+    <div class="panel-actions">
+      <button class="btn btn-parchment" id="btn-char-back">← Retour</button>
+      <button class="btn btn-gold" id="btn-char-start">🌊 Prendre la mer</button>
+    </div>
+  </div>
+  <div class="app-signature">Kais Alvarez</div>
+</section>
+
+<!-- ==================== CARTE DU MONDE ==================== -->
+<section class="screen" id="screen-map">
+  <header class="hud" id="hud"></header>
+  <div class="world-map" id="world-map">
+    <div class="map-grid"></div>
+    <div class="map-compass">🧭</div>
+    <svg class="map-routes" id="map-routes" preserveAspectRatio="none" viewBox="0 0 100 100"></svg>
+    <div id="map-islands"></div>
+    <div class="map-ship" id="map-ship">⛵</div>
+    <div class="map-waves"></div>
+  </div>
+  <nav class="map-nav">
+    <button class="btn btn-parchment btn-nav" id="btn-nav-ship">⛵ Navire</button>
+    <button class="btn btn-parchment btn-nav" id="btn-nav-collection">🗝️ Collection</button>
+    <button class="btn btn-parchment btn-nav" id="btn-nav-settings">⚙️</button>
+    <button class="btn btn-parchment btn-nav" id="btn-nav-home">🏠 Accueil</button>
+    <span class="app-signature nav-sig">Kais Alvarez</span>
+  </nav>
+</section>
+
+<!-- ==================== ÉCRAN ÎLE ==================== -->
+<section class="screen" id="screen-island">
+  <header class="hud" id="hud-island"></header>
+  <div class="panel island-panel" id="island-panel"></div>
+  <div class="app-signature">Kais Alvarez</div>
+</section>
+
+<!-- ==================== NAVIRE ==================== -->
+<section class="screen" id="screen-ship">
+  <header class="hud" id="hud-ship"></header>
+  <div class="panel parchment" id="ship-panel"></div>
+  <div class="app-signature">Kais Alvarez</div>
+</section>
+
+<!-- ==================== COLLECTION ==================== -->
+<section class="screen" id="screen-collection">
+  <header class="hud" id="hud-collection"></header>
+  <div class="panel collection-panel" id="collection-panel"></div>
+  <div class="app-signature">Kais Alvarez</div>
+</section>
+
+<!-- ==================== PARAMÈTRES ==================== -->
+<section class="screen" id="screen-settings">
+  <header class="hud" id="hud-settings"></header>
+  <div class="panel parchment" id="settings-panel"></div>
+  <div class="app-signature">Kais Alvarez</div>
+</section>
+
+<!-- ==================== MODALE MINI-JEU ==================== -->
+<div class="modal-overlay" id="modal-minigame">
+  <div class="modal minigame-modal">
+    <div class="modal-header">
+      <h3 id="minigame-title"></h3>
+      <button class="btn-close" id="btn-minigame-close" title="Abandonner">✕</button>
+    </div>
+    <div class="modal-body" id="minigame-body"></div>
+    <div class="modal-signature">Kais Alvarez</div>
+  </div>
+</div>
+
+<!-- ==================== MODALE COFFRE / RÉCOMPENSE ==================== -->
+<div class="modal-overlay" id="modal-reward">
+  <div class="modal reward-modal">
+    <div class="modal-body" id="reward-body"></div>
+    <div class="modal-signature">Kais Alvarez</div>
+  </div>
+</div>
+
+<!-- ==================== MODALE GÉNÉRIQUE ==================== -->
+<div class="modal-overlay" id="modal-generic">
+  <div class="modal generic-modal">
+    <div class="modal-body" id="generic-body"></div>
+    <div class="modal-signature">Kais Alvarez</div>
+  </div>
+</div>
+
+<div class="toast-container" id="toasts"></div>
+
+<script src="js/data.js"></script>
+<script src="js/audio.js"></script>
+<script src="js/state.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/minigames.js"></script>
+<script src="js/game.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
